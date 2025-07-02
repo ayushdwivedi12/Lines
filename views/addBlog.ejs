@@ -2,43 +2,37 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/header')%>
-        <title>Create New Blog</title>
+    <%- include('./partials/header') %>
+    <title>Create New Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
     <%- include("./partials/nav") %>
-        <div class="container mt-3">
-            <form action="/blog" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="title">
-                        CoverImage
-                    </label>
-                    <input type="file" class="form-control" id="CoverImage" name="CoverImage"
-                        aria-describedby="CoverImage">
-                </div>
-        </div>
-        <div class="container mt-3">
+
+    <div class="container mt-4">
+        <h2 class="text-center">Create New Blog</h2>
+        <form action="/blog" method="POST" enctype="multipart/form-data" class="mt-4">
             <div class="mb-3">
-                <label for="title">
-                    Title
-                </label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+                <label for="coverImage" class="form-label">Cover Image</label>
+                <input type="file" class="form-control" id="coverImage" name="coverImage" required>
             </div>
-        </div>
-        <div class="container mt-3">
+
             <div class="mb-3">
-                <label for="body">
-                    Body
-                </label>
-                <textarea class="form-control" name="body" id="body"></textarea>
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Blog Title" required>
             </div>
-            <div>
-                <button class="btn btn-primary">Submit</button>
+
+            <div class="mb-3">
+                <label for="body" class="form-label">Body</label>
+                <textarea class="form-control" name="body" id="body" rows="6" placeholder="Write your blog..." required></textarea>
             </div>
-            </form>
-        </div>
-        <%- include('./partials/script') %>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+    <%- include('./partials/script') %>
 </body>
 
 </html>
