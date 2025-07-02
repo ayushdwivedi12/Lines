@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: blogify
+    env: node
+    plan: free
+    buildCommand: npm install --legacy-peer-deps
+    startCommand: node app.js
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: MONGO_URL
+        value: your-mongo-url
+      - key: SECRET
+        value: your-secret
+      - key: CLOUDINARY_CLOUD_NAME
+        value: dygwbsibj
+      - key: CLOUDINARY_API_KEY
+        value: 462262833835365
+      - key: CLOUDINARY_API_SECRET
+        value: Czjs9peUJSI8XSHvEfyzpZPrqZw
