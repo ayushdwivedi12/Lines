@@ -2,21 +2,16 @@
   .navbar {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 0.6rem 1rem;
-    white-space: nowrap;
-    overflow-x: auto;
   }
 
   .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
-    margin-right: 1.5rem;
   }
 
   .nav-link {
     font-weight: 500;
     transition: color 0.3s ease;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
   }
 
   .nav-link:hover {
@@ -24,50 +19,62 @@
   }
 
   form[role="search"] input {
-    max-width: 240px; /* 🔥 Increased from 180 to 240 */
+    max-width: 250px;
   }
 
   @media (max-width: 768px) {
-    form[role="search"] {
-      flex-wrap: nowrap;
+    form[role="search"] input {
+      max-width: 150px;
     }
   }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex align-items-center justify-content-between">
-  <div class="container-fluid d-flex align-items-center gap-3 flex-nowrap">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
     <a class="navbar-brand" href="/">📝 Blogify</a>
 
-    <ul class="navbar-nav flex-row gap-2 me-auto mb-0">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
-      </li>
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <% if (locals.user) { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/add-blog">Add Blog</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            👋 <%= user.fullName %>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
-          </ul>
-        </li>
-      <% } else { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/user/signup">Create Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/user/signin">Sign In</a>
-        </li>
-      <% } %>
-    </ul>
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse d-lg-flex justify-content-between align-items-center" id="navbarContent">
 
-    <form class="d-flex align-items-center" action="/blog/search" method="GET" role="search">
-      <input class="form-control me-2" type="search" name="title" placeholder="Search Blog..." required>
-      <button class="btn btn-sm btn-outline-light" type="submit">Search</button>
-    </form>
+      <!-- Left Nav Links -->
+      <ul class="navbar-nav mb-2 mb-lg-0 flex-row flex-wrap gap-2">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+
+        <% if (locals.user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/add-blog">Add Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              👋 <%= user.fullName %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+            </ul>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signup">Create Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signin">Sign In</a>
+          </li>
+        <% } %>
+      </ul>
+
+      <!-- Search Bar -->
+      <form class="d-flex mt-2 mt-lg-0" action="/blog/search" method="GET" role="search">
+        <input class="form-control me-2" type="search" name="title" placeholder="Search Blog..." required>
+        <button class="btn btn-sm btn-outline-light" type="submit">Search</button>
+      </form>
+
+    </div>
   </div>
 </nav>
