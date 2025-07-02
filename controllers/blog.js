@@ -19,12 +19,14 @@ async function handleAddBlog(req, res) {
 
 async function handleFileUpload(req, res) {
   const { title, body } = req.body;
+
   const blog = await Blog.create({
     body,
     title,
     createdBy: req.user._id,
-    coverImageURL: `req.file.path`,
+    coverImageURL: req.file.path, 
   });
+
   return res.redirect(`/blog/${blog._id}`);
 }
 
@@ -47,9 +49,8 @@ async function handleSearchBlog(req, res) {
 
 async function handleViewBlog(req, res) {
   const blog = await Blog.findById(req.params.id).populate("createdBy");
-  const comments = await Comment.find({ blogId: req.params.id }).populate(
-    "createdBy"
-  );
+  const comments = await Comment.find({ blogId: req.params.id }).populate("createdBy");
+
   return res.render("blog", {
     user: req.user,
     blog,
