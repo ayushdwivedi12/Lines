@@ -1,15 +1,7 @@
+// middleware/upload.js
 const multer = require("multer");
-const path = require("path");
+const { storage } = require("../services/cloudinary"); // 👈 Correct path
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.resolve(`./public/uploads`));
-  },
-  filename: function (req, file, cb) {
-    return cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
+const upload = multer({ storage });
 
-const upload = multer({ storage: storage });
-
-module.exports = { upload, };
+module.exports = { upload };

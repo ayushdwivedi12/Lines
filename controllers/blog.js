@@ -23,10 +23,28 @@ async function handleFileUpload(req, res) {
     body,
     title,
     createdBy: req.user._id,
-    coverImageURL: `${req.file.filename}`,
+    coverImageURL: `req.file.path`,
   });
   return res.redirect(`/blog/${blog._id}`);
 }
+
+async function handleSearchBlog(req, res) {
+  const { title } = req.query;
+
+  try {
+    const blogs = await Blog.find({
+      title: { $regex: new RegExp(title, "i") },
+    });
+
+    res.render("home", {
+      blogs,
+      user: req.user,
+    });
+  } catch (err) {
+    res.status(500).send("Something went wrong");
+  }
+}
+
 
 async function handleViewBlog(req, res) {
   const blog = await Blog.findById(req.params.id).populate("createdBy");
