@@ -1,10 +1,10 @@
-const  Blog = require("../models/blog");
+const Blog = require("../models/blog");
 const { upload } = require("../middlewares/upload");
 const mongoose = require("mongoose");
 const Comment = require("../models/comment");
 
-async function handleGetAllBlogs(req,res){
-   const allBlogs = await Blog.find({});
+async function handleGetAllBlogs(req, res) {
+  const allBlogs = await Blog.find({});
   res.render("home", {
     user: req.user,
     blogs: allBlogs,
@@ -45,10 +45,11 @@ async function handleSearchBlog(req, res) {
   }
 }
 
-
 async function handleViewBlog(req, res) {
   const blog = await Blog.findById(req.params.id).populate("createdBy");
-  const comments = await Comment.find({blogId:req.params.id}).populate("createdBy");
+  const comments = await Comment.find({ blogId: req.params.id }).populate(
+    "createdBy"
+  );
   return res.render("blog", {
     user: req.user,
     blog,
@@ -66,11 +67,11 @@ async function handleComments(req, res) {
   return res.redirect(`/blog/${req.params.blogId}`);
 }
 
-
 module.exports = {
   handleAddBlog,
   handleFileUpload,
   handleViewBlog,
   handleComments,
   handleGetAllBlogs,
+  handleSearchBlog,
 };

@@ -2,50 +2,63 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/header')%>
-        <title>Blog</title>
+    <%- include('./partials/header') %>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive support -->
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 
 <body>
     <%- include("./partials/nav") %>
 
-        <div class="container mt-4">
-            <h1>
-                <%= blog.title %>
-            </h1>
-            <img src="/uploads/<%= blog.coverImageURL %>" alt="" width="800px" class="img-fluid my-3">
-            <pre class="mt-3" style="white-space: pre-wrap;"><%= blog.body %></pre>
-        </div>
-        <div class="container mt-4">
-            <img src="<%= blog.createdBy.profileImageURL.replace("./public","") %>" width="50px" alt="creator-img">
-            <%= blog.createdBy.fullName %>
-        </div>
+    <div class="container mt-4">
+        <h1 class="text-center"><%= blog.title %></h1>
+        <img src="/uploads/<%= blog.coverImageURL %>" alt="cover image" class="img-fluid my-3 d-block mx-auto rounded">
+        <pre class="mt-3"><%= blog.body %></pre>
+    </div>
 
-        <div class="container mt-3">
-            <h1>Comments{<%= comments.length %>}</h1>
-            <% if (locals.user) { %>
-                <form action="/blog/comment/<%= blog._id %>" method="post">
-                    <div class="mb-3">
-                        <input type="text" name="content" class="form-control" placeholder="Enter Your Comments">
-                        <button class="btn btn-primary" type="submit">Add</button>
-                    </div>
-                </form>
-                
-                <% } %>
+    <div class="container mt-4 d-flex align-items-center gap-3">
+        <img src="<%= blog.createdBy.profileImageURL.replace("./public","") %>" width="50" class="rounded-circle" alt="creator-img">
+        <strong><%= blog.createdBy.fullName %></strong>
+    </div>
 
-                <div class="mt-3">
-                    <% comments.forEach(comment=> { %>
-                        <div>
-                            <img src="<%= comment.createdBy.profileImageURL.replace("./public","")  %>" width="50px" alt="">
-                            <%= comment.createdBy.fullName %>:
-                                <pre><%= comment.content %></pre>
-                        </div>
-                        <% }) %>
+    <div class="container mt-5">
+        <h2>Comments (<%= comments.length %>)</h2>
+
+        <% if (locals.user) { %>
+        <form action="/blog/comment/<%= blog._id %>" method="post" class="mt-3">
+            <div class="mb-3">
+                <input type="text" name="content" class="form-control" placeholder="Enter Your Comment" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Add Comment</button>
+        </form>
+        <% } else { %>
+        <p class="text-muted mt-3">Login to add comments.</p>
+        <% } %>
+
+        <div class="mt-4">
+            <% comments.forEach(comment => { %>
+            <div class="d-flex align-items-start gap-3 mb-3">
+                <img src="<%= comment.createdBy.profileImageURL.replace("./public", "") %>" width="40" class="rounded-circle" alt="">
+                <div>
+                    <strong><%= comment.createdBy.fullName %></strong>
+                    <pre class="mb-0"><%= comment.content %></pre>
                 </div>
-
+            </div>
+            <% }) %>
         </div>
+    </div>
 
-        <%- include('./partials/script') %>
+    <%- include('./partials/script') %>
 </body>
 
 </html>

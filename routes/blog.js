@@ -5,6 +5,7 @@ const {
   handleViewBlog,
   handleComments,
   handleGetAllBlogs,
+  handleSearchBlog
 } = require("../controllers/blog");
 const { upload } = require("../middlewares/upload");
 const Blog = require("../models/blog");
