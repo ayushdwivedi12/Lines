@@ -42,7 +42,8 @@ git clone https://github.com/ayushdwivedi12/Blogify-v1.git
 cd Blogify-v1
 
 2. Install dependencies
-npm install
+npm install --legacy-peer-deps
+
 
 3. Create .env file
 PORT=8080  
