@@ -7,14 +7,14 @@ services:
     startCommand: node app.js
     envVars:
       - key: PORT
-        value: 8080
+        fromEnvVar: PORT
       - key: MONGO_URL
-        value: your-mongo-url
+        fromEnvVar: MONGO_URL
       - key: SECRET
-        value: your-secret
+        fromEnvVar: SECRET
       - key: CLOUDINARY_CLOUD_NAME
-        value: dygwbsibj
+        fromEnvVar: CLOUDINARY_CLOUD_NAME
       - key: CLOUDINARY_API_KEY
-        value: 462262833835365
+        fromEnvVar: CLOUDINARY_API_KEY
       - key: CLOUDINARY_API_SECRET
-        value: Czjs9peUJSI8XSHvEfyzpZPrqZw
+        fromEnvVar: CLOUDINARY_API_SECRET
