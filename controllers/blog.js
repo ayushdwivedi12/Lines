@@ -58,6 +58,17 @@ async function handleViewBlog(req, res) {
   });
 }
 
+async function handleDeleteBlog(req, res) {
+  try {
+    const blogId = req.params.id;
+    await Blog.findByIdAndDelete(blogId);
+    res.redirect("/");
+  } catch (err) {
+    console.error("Error deleting blog:", err);
+    res.status(500).send("Something went wrong");
+  }
+}
+
 async function handleComments(req, res) {
   const comment = await Comment.create({
     content: req.body.content,
@@ -75,4 +86,5 @@ module.exports = {
   handleComments,
   handleGetAllBlogs,
   handleSearchBlog,
+  handleDeleteBlog,
 };
