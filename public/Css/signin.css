@@ -1,0 +1,83 @@
+body {
+  background: linear-gradient(135deg, #fef9f9, #e9f0ff);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 480px;
+  width: 100%;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-card h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #0d6efd;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 12px 15px;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.btn-primary {
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+}
+
+.form-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.form-footer a {
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode text fixes */
+body.dark-mode .form-card {
+  background: rgba(30, 30, 30, 0.9);
+  color: #f1f1f1;
+}
+
+body.dark-mode .form-label {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode .form-footer small {
+  color: #ccc !important;
+}

@@ -14,6 +14,10 @@ const blogSchema = new Schema(
       type: String,
       required: false,
     },
+    tags: {
+      type: [String],
+      default: [],
+    },
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: "user",

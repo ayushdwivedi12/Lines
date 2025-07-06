@@ -2,28 +2,40 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/header')%>
-        <title>SignUp</title>
+  <%- include('./partials/header') %>
+  <title>Sign In - Blogify</title>
+<link rel="stylesheet" href="/css/signin.css">
 </head>
 
-<body>
-    <%- include("./partials/nav") %>
+<body class="bg-light text-dark">
+  <%- include("./partials/nav") %>
 
-        <div class="container">
-            <form action="/user/signin" method="post">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                        aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+  <div class="form-wrapper">
+    <div class="form-card">
+      <h2 class="text-center text-primary fw-bold">Welcome Back!</h2>
+      <form action="/user/signin" method="POST" autocomplete="off">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label fw-medium text-dark">Email Address</label>
+          <input type="email" name="email" id="exampleInputEmail1" class="form-control" placeholder="you@example.com" required>
         </div>
-        <%- include('./partials/script') %>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label fw-medium text-dark">Password</label>
+          <input type="password" name="password" id="exampleInputPassword1" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+
+        <div class="form-footer">
+          <small class="text-muted">Don't have an account?
+            <a href="/user/signup">Register here</a>
+          </small>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <%- include('./partials/script') %>
 </body>
 
 </html>

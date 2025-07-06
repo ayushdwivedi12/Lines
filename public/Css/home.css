@@ -1,0 +1,53 @@
+.btn {
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+}
+
+/* Theme-aware card */
+.card.dark-mode {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card.dark-mode .card-text {
+  color: #d1d1d1 !important;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .card-body {
+    color: #f8f9fa !important;
+  }
+  .card-text {
+    color: #adb5bd !important;
+  }
+}

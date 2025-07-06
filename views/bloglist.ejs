@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/header') %>
+  <title>Explore Blogs - Blogify</title>
+  <link rel="stylesheet" href="/css/bloglist.css">
+</head>
+
+<body class="bg-light text-dark">
+  <%- include('partials/nav') %>
+
+  <!-- Page Header -->
+  <header class="py-5 text-center bg-light border-bottom">
+    <div class="container">
+      <h1 class="display-5 fw-bold text-primary">🧭 Explore All Blogs</h1>
+      <p class="lead text-muted">Dive into the thoughts and stories shared by our community</p>
+    </div>
+  </header>
+
+  <!-- Blog Cards -->
+  <div class="container mt-5 mb-5">
+    <% if (blogs.length > 0) { %>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <% blogs.forEach(blog => { %>
+          <div class="col">
+            <div class="card blog-card h-100 shadow-sm">
+              <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Blog Image"
+                style="height: 160px; object-fit: cover;">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-semibold"><%= blog.title %></h5>
+                <p class="card-text text-muted small">
+                  <%= blog.body?.slice(0, 100) || "No preview available." %>...
+                </p>
+                <a href="/blog/<%= blog._id %>" class="btn btn-outline-primary mt-auto">👁️ Read More</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="alert alert-info text-center">
+        No blogs found. Be the first to <a href="/blog/add-blog">write one</a>!
+      </div>
+    <% } %>
+  </div>
+
+  <%- include('partials/script') %>
+</body>
+
+</html>

@@ -1,10 +1,8 @@
 const Blog = require("../models/blog");
-const { upload } = require("../middlewares/upload");
-const mongoose = require("mongoose");
 const Comment = require("../models/comment");
 
 async function handleGetAllBlogs(req, res) {
-  const allBlogs = await Blog.find({});
+  const allBlogs = await Blog.find().sort({ createdAt: -1 }).limit(8);
   res.render("home", {
     user: req.user,
     blogs: allBlogs,
@@ -24,7 +22,7 @@ async function handleFileUpload(req, res) {
     body,
     title,
     createdBy: req.user._id,
-    coverImageURL: req.file.path, 
+    coverImageURL: req.file.path,
   });
 
   return res.redirect(`/blog/${blog._id}`);
@@ -49,7 +47,9 @@ async function handleSearchBlog(req, res) {
 
 async function handleViewBlog(req, res) {
   const blog = await Blog.findById(req.params.id).populate("createdBy");
-  const comments = await Comment.find({ blogId: req.params.id }).populate("createdBy");
+  const comments = await Comment.find({ blogId: req.params.id }).populate(
+    "createdBy"
+  );
 
   return res.render("blog", {
     user: req.user,
@@ -79,6 +79,27 @@ async function handleComments(req, res) {
   return res.redirect(`/blog/${req.params.blogId}`);
 }
 
+async function handleExploreBlogs(req, res) {
+  const { tag } = req.query;
+
+  let filter = {};
+  if (tag && tag !== "all") {
+    filter.tags = tag; // assumes `tags: [String]` in Blog schema
+  }
+
+  try {
+    const blogs = await Blog.find(filter).sort({ createdAt: -1 });
+    res.render("bloglist", {
+      blogs,
+      user: req.user,
+      activeTag: tag || "all",
+    });
+  } catch (err) {
+    console.error("Error loading explore page:", err);
+    res.status(500).send("Failed to load blogs.");
+  }
+}
+
 module.exports = {
   handleAddBlog,
   handleFileUpload,
@@ -87,4 +108,5 @@ module.exports = {
   handleGetAllBlogs,
   handleSearchBlog,
   handleDeleteBlog,
+  handleExploreBlogs,
 };

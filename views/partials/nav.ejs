@@ -1,47 +1,17 @@
-<style>
-  .navbar {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 0.6rem 1rem;
-  }
-
-  .navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
-  }
-
-  .nav-link {
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-
-  .nav-link:hover {
-    color: #ffc107 !important;
-  }
-
-  form[role="search"] input {
-    max-width: 250px;
-  }
-
-  @media (max-width: 768px) {
-    form[role="search"] input {
-      max-width: 150px;
-    }
-  }
-</style>
-
+<link rel="stylesheet" href="/css/nav.css">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">📝 Blogify</a>
+    <a class="navbar-brand" href="/">Blogify</a>
 
-    <!-- Mobile Toggle Button -->
+    <!-- Mobile Toggle -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Collapsible Content -->
-    <div class="collapse navbar-collapse d-lg-flex justify-content-between align-items-center" id="navbarContent">
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarContent">
 
-      <!-- Left Nav Links -->
+      <!-- Left Links -->
       <ul class="navbar-nav mb-2 mb-lg-0 flex-row flex-wrap gap-2">
         <li class="nav-item">
           <a class="nav-link active" href="/">Home</a>
@@ -51,30 +21,35 @@
           <li class="nav-item">
             <a class="nav-link" href="/blog/add-blog">Add Blog</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              👋 <%= user.fullName %>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
-            </ul>
-          </li>
-        <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/user/signup">Create Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/user/signin">Sign In</a>
-          </li>
-        <% } %>
+          <% } %>
       </ul>
 
-      <!-- Search Bar -->
-      <form class="d-flex mt-2 mt-lg-0" action="/blog/search" method="GET" role="search">
-        <input class="form-control me-2" type="search" name="title" placeholder="Search Blog..." required>
-        <button class="btn btn-sm btn-outline-light" type="submit">Search</button>
-      </form>
+      <!-- Right: Search + Theme Toggle + Auth -->
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <!-- Search -->
+        <form class="d-flex" action="/blog/search" method="GET" role="search">
+          <input class="form-control me-2" type="search" name="title" placeholder="Search Blog...">
+          <button class="btn btn-sm btn-outline-warning" type="submit">Search</button>
+        </form>
 
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="btn btn-sm btn-outline-light" title="Toggle Light/Dark Mode">🌙</button>
+
+        <!-- Auth -->
+        <% if (locals.user) { %>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown">
+              <%= user.fullName %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item " href="/user/logout">Logout</a></li>
+            </ul>
+          </div>
+          <% } else { %>
+            <a class="btn btn-outline-light btn-sm" href="/user/signin">Sign In</a>
+            <a class="btn btn-warning btn-sm text-dark fw-semibold" href="/user/signup">Register</a>
+            <% } %>
+      </div>
     </div>
   </div>
 </nav>

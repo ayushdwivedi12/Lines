@@ -1,0 +1,59 @@
+.navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 0.6rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important;
+}
+
+.btn-outline-light:hover {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  border-color: #ffc107 !important;
+}
+
+.btn:hover {
+  background-color: #4b07eb !important;
+  color: #000 !important;
+}
+
+form[role="search"] input {
+  max-width: 250px;
+}
+
+#themeToggle {
+  border-color: #ffc107;
+}
+
+/* Theme-aware card */
+.card.dark-mode {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card.dark-mode .card-text {
+  color: #d1d1d1 !important;
+}
+
+@media (max-width: 768px) {
+  form[role="search"] input {
+    max-width: 150px;
+  }
+
+  .d-flex.flex-wrap.gap-3 {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
