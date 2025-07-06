@@ -1,15 +1,29 @@
 .navbar {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 0.6rem 1rem;
+  background-color: rgba(33, 37, 41, 0.95);
+  padding: 0.8rem 1.5rem;
+  border-radius: 1rem;
+  margin: 15px auto 0;
+  width: 95%;
+  max-width: 1300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
 }
 
+/* Logo */
 .navbar-brand {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  color: #fff;
 }
 
+.navbar-brand:hover {
+  color: #ffc107;
+}
+
+/* Nav Links */
 .nav-link {
   font-weight: 500;
+  color: #fff !important;
   transition: color 0.3s ease;
 }
 
@@ -17,6 +31,7 @@
   color: #ffc107 !important;
 }
 
+/* Button Hovers */
 .btn-outline-light:hover {
   background-color: #ffc107 !important;
   color: #000 !important;
@@ -25,18 +40,21 @@
 
 .btn:hover {
   background-color: #4b07eb !important;
-  color: #000 !important;
+  color: #fff !important;
 }
 
+/* Search Bar */
 form[role="search"] input {
   max-width: 250px;
+  border-radius: 10px;
 }
 
+/* Theme Toggle Button */
 #themeToggle {
   border-color: #ffc107;
 }
 
-/* Theme-aware card */
+/* Dark mode card */
 .card.dark-mode {
   background-color: #1e1e1e !important;
   color: #f1f1f1 !important;
@@ -47,7 +65,15 @@ form[role="search"] input {
   color: #d1d1d1 !important;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+  .navbar {
+    width: 98%;
+    border-radius: 0.8rem;
+    margin: 10px auto 0;
+    padding: 0.6rem 1rem;
+  }
+
   form[role="search"] input {
     max-width: 150px;
   }
