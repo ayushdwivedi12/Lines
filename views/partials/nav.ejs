@@ -1,17 +1,15 @@
 <link rel="stylesheet" href="/Css/nav.css">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Blogify</a>
 
-    <!-- Mobile Toggle -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Content -->
     <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarContent">
 
-      <!-- Left Links -->
       <ul class="navbar-nav mb-2 mb-lg-0 flex-row flex-wrap gap-2">
         <li class="nav-item">
           <a class="nav-link active" href="/">Home</a>
@@ -21,21 +19,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/blog/add-blog">Add Blog</a>
           </li>
-          <% } %>
+        <% } %>
       </ul>
 
-      <!-- Right: Search + Theme Toggle + Auth -->
       <div class="d-flex align-items-center gap-3 flex-wrap">
-        <!-- Search -->
+
         <form class="d-flex" action="/blog/search" method="GET" role="search">
           <input class="form-control me-2" type="search" name="title" placeholder="Search Blog...">
           <button class="btn btn-sm btn-outline-warning" type="submit">Search</button>
         </form>
 
-        <!-- Theme Toggle -->
         <button id="themeToggle" class="btn btn-sm btn-outline-light" title="Toggle Light/Dark Mode">🌙</button>
 
-        <!-- Auth -->
         <% if (locals.user) { %>
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown">
@@ -45,11 +40,12 @@
               <li><a class="dropdown-item " href="/user/logout">Logout</a></li>
             </ul>
           </div>
-          <% } else { %>
-            <a class="btn btn-outline-light btn-sm" href="/user/signin">Sign In</a>
-            <a class="btn btn-warning btn-sm text-dark fw-semibold" href="/user/signup">Register</a>
-            <% } %>
+        <% } else { %>
+          <a class="btn btn-outline-light btn-sm" href="/user/signin">Sign In</a>
+          <a class="btn btn-warning btn-sm text-dark fw-semibold" href="/user/signup">Register</a>
+        <% } %>
       </div>
+
     </div>
   </div>
 </nav>
