@@ -1,68 +1,53 @@
-Blogify v1
+# Blogify v1  
+**A full-stack blog app with Cloudinary image uploads**  
+🔗 Live: [https://blogify-0h6c.onrender.com](https://blogify-0h6c.onrender.com)  
 
-A full-stack Blog Web Application where users can create, read, and share blogs with images.  
-Built using Node.js, Express, MongoDB, Mongoose, and EJS templating engine.
+## Features  
+- Create rich blog posts with title, body and cover images  
+- Secure image uploads using Multer + Cloudinary  
+- Homepage blog listing with author info  
+- Detailed post viewing experience  
+- User session management  
 
-Live Link: https://blogify-0h6c.onrender.com
+## Tech Stack  
+- **Backend**: Node.js, Express  
+- **Database**: MongoDB, Mongoose  
+- **Frontend**: EJS, Bootstrap  
+- **Image Storage**: Multer + Cloudinary  
+- **Hosting**: Render  
 
-Preview
-Screenshots coming soon...
+## Folder Structure  
 
-Features
-- Create rich blog posts with title, body, and cover image
-- Image upload handled with Multer
-- Blogs list on homepage with user and date
-- Detailed view of each blog post
-- User session support (Ready for auth integration)
-- Clean folder structure with Express routing and controllers
-
-Tech Stack
-Backend: Node.js, Express.js  
-Database: MongoDB Atlas, Mongoose  
-View Engine: EJS  
-Styling: Bootstrap, CSS  
-File Upload: Multer  
-Deployment: Render
-
-Folder Structure
 Blogify-v1/
-├── models/              # Mongoose schemas
-├── routes/              # Express routes
-├── controllers/         # Controller logic
-├── views/               # EJS templates
-├── uploads/             # Uploaded images
-├── public/              # Static assets
-├── app.js               # Main app file
-└── .env.example         # Environment variable example
+├── models/ # Mongoose data models
+├── controllers/ # Business logic
+├── routes/ # Express routes
+├── views/ # EJS templates
+├── public/ # Static assets (CSS/JS)
+├── uploads/ # Temporary image storage
+├── app.js # Main application file
+└── .env.example # Environment template
 
-Getting Started Locally
-
-1. Clone the repository
+## Setup  
+1. Clone the repository:  
 git clone https://github.com/ayushdwivedi12/Blogify-v1.git
 cd Blogify-v1
 
 2. Install dependencies
 npm install --legacy-peer-deps
 
-
-3. Create .env file
-PORT=8080  
-MONGO_URL=your_mongodb_connection_string  
+4. Create .env file: 
+PORT=8080
+MONGO_URL=your_mongodb_connection_string
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 SECRET=your_session_secret
 
-4. Run the app
-npm start  
-Visit: http://localhost:8080
-
-Live Project
-Hosted on Render:  
-https://blogify-0h6c.onrender.com
-
-Author
-Ayush Dwivedi 
+5. Start the application:
+npm start
 
 License
-This project is licensed under the MIT License.
+MIT © Ayush Dwivedi
 
-Bonus
-Feel free to fork, clone, or star this repo if you found it helpful.
+
