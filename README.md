@@ -1,4 +1,4 @@
-# Blogify v1
+# Lines v1
 
 A full-stack blogging platform built with **Express**, **MongoDB**, **EJS**, and **Cloudinary** for image uploads.  
 Share your thoughts, explore community blogs, and manage your posts with a clean UI.
@@ -21,7 +21,7 @@ Share your thoughts, explore community blogs, and manage your posts with a clean
 1. **Clone the repository**
     ```bash
     git clone https://github.com/ayushdwivedi12/Blogify-v1.git
-    cd Blogify-v1
+    cd Lines-v1
     ```
 
 2. **Install dependencies**
@@ -52,7 +52,7 @@ App runs on `http://localhost:8080`
 ## Folder Structure
 
 ```
-Blogify-v1/
+Lines-v1/
 ├── controllers/      # Express controllers
 ├── models/           # Mongoose models
 ├── routes/           # Express routes
